@@ -1,4 +1,4 @@
-
+NODE = 3
 NETWORK = "192.168.33"
 lastoctet = 200
 
@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     master.vm.network "private_network", ip: "#{NETWORK}.#{lastoctet}"
   end
 
-  (1..2).each do |i|
+  (1..NODE).each do |i|
     config.vm.define "node-#{i}" do |master|
       master.vm.hostname = "node-#{i}"
       master.vm.network "private_network", ip: "#{NETWORK}.#{lastoctet+i}"
